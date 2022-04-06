@@ -24,7 +24,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	
 	@Override
 	public List<String> GetSymptoms() {
-		List<String> result = new ArrayList<String>();
+		ArrayList<String> result = new ArrayList<String>();
 		//line-by-line reading of the file and integration in the array result
 		if (filepath != null) {
 			try {

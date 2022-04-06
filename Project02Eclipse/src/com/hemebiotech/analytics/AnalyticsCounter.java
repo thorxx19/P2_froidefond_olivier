@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ public class AnalyticsCounter {
 		CountWriteSymptomDataFromFile countSymptomDataFromFile = new CountWriteSymptomDataFromFile();
 
 		//read symptoms.txt
-		List<String> listeSymptom = readSymptomDataFromFile.GetSymptoms();
+		ArrayList<String> listeSymptom = (ArrayList<String>) readSymptomDataFromFile.GetSymptoms();
 
 		//count symptome and write in result.out
 		countSymptomDataFromFile.CountWriteSymptom(listeSymptom);

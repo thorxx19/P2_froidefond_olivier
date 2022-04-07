@@ -29,24 +29,26 @@ public class CountWriteSymptomDataFromFile {
             int count = 0;
             //search for identical occurrences and their number to write it only once in the file result.out
 
-            for (Object i: tabSymptoms) {
+        for (Object i: tabSymptoms) {
 
                 if (!symTemp.isEmpty() && !newList.contains(i)){
                     sympton.append(symTemp).append("=").append(count).append("\n");
                     count =0;
                 }
-            if (newList.contains(i) && !symTemp.isEmpty()){
-                if (countSymptom.contains(i)){
+                if (newList.contains(i) && !symTemp.isEmpty()){
+                    if (countSymptom.contains(i)){
+                        count++;
+                    }
+                }else {
+                    symTemp = "";
+                    newList.add(String.valueOf(i));
+                    symTemp = String.valueOf(i);
                     count++;
                 }
-            }else {
-                symTemp = "";
-                newList.add(String.valueOf(i));
-                symTemp = String.valueOf(i);
-                count++;
-            }
         }
+        if (count == 1 && !symTemp.isEmpty()){
             sympton.append(symTemp).append("=").append(count).append("\n");
+        }
 
             // writes symptoms and count occurences in new result.out file
             FileWriter writer = new FileWriter("result.out");

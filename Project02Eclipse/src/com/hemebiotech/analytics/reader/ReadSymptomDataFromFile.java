@@ -1,9 +1,10 @@
-package com.hemebiotech.analytics;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+package com.hemebiotech.analytics.reader;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 /**
  * Simple brute force implementation
  *
@@ -28,16 +29,15 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		//line-by-line reading of the file and integration in the array result
 		if (filepath != null) {
 			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
-				String line = reader.readLine();
-				
-				while (line != null) {
-					result.add(line);
-					line = reader.readLine();
+
+				File file = new File(filepath);
+				Scanner scanner = new Scanner(file);
+
+				while (scanner.hasNextLine()){
+					result.add(scanner.nextLine());
 				}
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+			} catch (FileNotFoundException e) {
+				System.out.println("file not found Exception");
 			}
 		}
 		return result;

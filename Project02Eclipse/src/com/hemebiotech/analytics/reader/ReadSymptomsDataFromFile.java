@@ -1,30 +1,39 @@
 package com.hemebiotech.analytics.reader;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * Simple brute force implementation
+ *class for method getSymptoms
  *
+ * @author o.froidefond
+ * class which parses the file enter @param line by line
+ * Simple brute force implementation
  */
 
-public class ReadSymptomDataFromFile implements ISymptomReader {
+public class ReadSymptomsDataFromFile implements ISymptomReader {
 	private final String filepath;
+
 	/**
-	 * 
-	 * @param filepath a full or partial path to file with symptom strings in it, one per line
-	 * @return returns a string array of symptoms read from the file symptoms
-	 * @author O.froidefond
-	 * class which parses the file enter @param line by line
-	 */
-	public ReadSymptomDataFromFile (String filepath) {
+	 * construct
+	 *
+	* @param filepath a full or partial path to file with symptom strings in it, one per line
+	*/
+	public ReadSymptomsDataFromFile(String filepath) {
 		this.filepath = filepath;
 	}
-	
+
+	/**
+	 * method
+	 *
+	 * @return string array of symptoms read from the file symptoms
+	 */
 	@Override
-	public List<String> GetSymptoms() {
+	public List<String> getSymptoms() {
+
 		ArrayList<String> result = new ArrayList<String>();
 		//line-by-line reading of the file and integration in the array result
 		if (filepath != null) {

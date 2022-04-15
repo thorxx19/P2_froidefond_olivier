@@ -1,11 +1,7 @@
 package com.hemebiotech.analytics;
 
 
-import com.hemebiotech.analytics.reader.ReadSymptomsDataFromFile;
-import com.hemebiotech.analytics.count.CountSymptomsDataFromMap;
-import com.hemebiotech.analytics.sort.SortSymptomsDataFromArray;
-import com.hemebiotech.analytics.write.WriteSymptomsDataFromMap;
-
+import com.hemebiotech.analytics.analyse.AnalyseSymptomsDataFromFile;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -18,7 +14,7 @@ import java.util.TreeMap;
 
 public class AnalyticsCounter {
 	/**
-	 * construct
+	 * construct basic
 	 */
 	public AnalyticsCounter() {
 	}
@@ -31,22 +27,20 @@ public class AnalyticsCounter {
 	public static void main(String[] args){
 
 		try {
-			ReadSymptomsDataFromFile readSymptomDataFromFile = new ReadSymptomsDataFromFile("Project02Eclipse/src/com/hemebiotech/analytics/resources/symptoms.txt");
-			SortSymptomsDataFromArray sortSymptomsDataFromArray = new SortSymptomsDataFromArray();
-			CountSymptomsDataFromMap countSymptomsDataFromMap = new CountSymptomsDataFromMap();
-			WriteSymptomsDataFromMap writeSymptomDataFromMap = new WriteSymptomsDataFromMap();
+			AnalyseSymptomsDataFromFile analyseSymptomsDataFromFile = new AnalyseSymptomsDataFromFile("Project02Eclipse/src/com/hemebiotech/analytics/resources/symptoms.txt");
+
 
 			//read symptoms.txt
-			ArrayList<String> listSymptomsRaw = (ArrayList<String>) readSymptomDataFromFile.getSymptoms();
+			ArrayList<String> listSymptomsRaw = (ArrayList<String>) analyseSymptomsDataFromFile.getSymptoms();
 
 			//sort sympoms in ArrayList listSymptoms
-			ArrayList<String> listSymptomsSort = sortSymptomsDataFromArray.sortSymptoms(listSymptomsRaw);
+			ArrayList<String> listSymptomsSort = analyseSymptomsDataFromFile.sortSymptoms(listSymptomsRaw);
 
 			//count symptom
-			TreeMap<String,Integer> mapSymptomCount = countSymptomsDataFromMap.countSymptom(listSymptomsSort);
+			TreeMap<String,Integer> mapSymptomCount = analyseSymptomsDataFromFile.countSymptom(listSymptomsSort);
 
 			//write symptom
-			writeSymptomDataFromMap.writeSymptom(mapSymptomCount);
+			analyseSymptomsDataFromFile.writeSymptom(mapSymptomCount);
 
 
 		}catch(Exception e){

@@ -1,32 +1,32 @@
-package com.hemebiotech.analytics.analyse;
+	package com.hemebiotech.analytics.analyse;
 
-import java.io.File;
+	import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.*;
 
-/**
- *class for method getSymptoms
- *
- * @author o.froidefond
- * class which parses the file enter @param line by line
- * Simple brute force implementation
- */
-
-public class AnalyseSymptomsDataFromFile implements ISymptomReader {
-	private final String filepath;
-
 	/**
-	 * construct
+	 *class for read, sort, count and write different symptoms
 	 *
-	* @param filepath a full or partial path to file with symptom strings in it, one per line
-	*/
-	public AnalyseSymptomsDataFromFile(String filepath) {
-		this.filepath = filepath;
-	}
+	 * @author o.froidefond
+	 * class which parses the file enter @param line by line
+	 * Simple brute force implementation
+	 */
+
+	public class AnalyseSymptomsDataFromFile implements ISymptomReader {
+		private final String filepath;
+
+		/**
+		 * construct
+		 *
+		* @param filepath a full or partial path to file with symptom strings in it, one per line
+		*/
+		public AnalyseSymptomsDataFromFile(String filepath) {
+			this.filepath = filepath;
+		}
 
 	/**
-	 * method
+	 * method (getSymptoms) for read symptom in file
 	 *
 	 * @return string array of symptoms read from the file symptoms
 	 */
@@ -52,7 +52,7 @@ public class AnalyseSymptomsDataFromFile implements ISymptomReader {
 	}
 
 	/**
-	 * sort the symptoms in alphabetical order
+	 * method (sortSymptoms) sort the symptoms in alphabetical order
 	 *
 	 * @param symptoms is raw array list of symptoms
 	 * @return listSymptomsSort is array sort of symptoms
@@ -62,22 +62,17 @@ public class AnalyseSymptomsDataFromFile implements ISymptomReader {
 		ArrayList<String> listSymptomsSort = new ArrayList<>();
 
 		try {
-			listSymptomsSort = new ArrayList<>();
-			String[] tabSymptoms = symptoms.toArray(new String[0]);
-			Arrays.sort(tabSymptoms);
 
-			Collections.addAll(listSymptomsSort, tabSymptoms);
-			//todo voir l'exemple
-			//symptoms.sort(String::compareTo);
+			symptoms.sort(String::compareTo);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return listSymptomsSort;
+		return symptoms;
 	}
 
 	/**
-	 *function countSymptom
+	 *method (countSymptoms) countSymptom for count different symptoms
 	 *
 	 * @param symptoms array with the symptoms retrieved in a .txt file
 	 * @return map is TreeMap count of different symptoms
@@ -99,7 +94,7 @@ public class AnalyseSymptomsDataFromFile implements ISymptomReader {
 	}
 
 	/**
-	 * fonction write symptoms
+	 * method (writeSymptoms) write symptoms in file result.out
 	 *
 	 * @param map is array symptom sort and count
 	 * fonction write the new file result.out

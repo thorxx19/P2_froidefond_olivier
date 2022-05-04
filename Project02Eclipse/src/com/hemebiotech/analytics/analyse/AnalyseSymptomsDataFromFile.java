@@ -13,16 +13,16 @@ import java.util.*;
  * Simple brute force implementation
  */
 
-public class AnalyseSymptomsDataFromFile implements ISymptomReader {
-    private final String filepath;
+public class AnalyseSymptomsDataFromFile implements ISymptomReader,ISymptomSorting,ISymptomCount,ISymptomWriter {
+    private final String filePath;
 
     /**
      * construct
      *
-     * @param filepath a full or partial path to file with symptom strings in it, one per line
+     * @param filePath a full or partial path to file with symptom strings in it, one per line
      */
-    public AnalyseSymptomsDataFromFile(String filepath) {
-        this.filepath = filepath;
+    public AnalyseSymptomsDataFromFile(String filePath) {
+        this.filePath = filePath;
     }
 
     /**
@@ -35,10 +35,10 @@ public class AnalyseSymptomsDataFromFile implements ISymptomReader {
 
         ArrayList<String> result = new ArrayList<String>();
         //line-by-line reading of the file and integration in the array result
-        if (filepath != null) {
+        if (filePath != null) {
             try {
 
-                File file = new File(filepath);
+                File file = new File(filePath);
                 Scanner scanner = new Scanner(file);
 
                 while (scanner.hasNextLine()) {
@@ -57,6 +57,7 @@ public class AnalyseSymptomsDataFromFile implements ISymptomReader {
      * @param symptoms is raw array list of symptoms
      * @return listSymptomsSort is array sort of symptoms
      */
+    @Override
     public ArrayList<String> sortSymptoms(ArrayList<String> symptoms) {
         ArrayList<String> listSymptomsSort = new ArrayList<>();
 
@@ -76,6 +77,7 @@ public class AnalyseSymptomsDataFromFile implements ISymptomReader {
      * @param symptoms array with the symptoms retrieved in a .txt file
      * @return map is TreeMap count of different symptoms
      */
+    @Override
     public TreeMap<String, Integer> countSymptom(ArrayList<String> symptoms) {
         final TreeMap<String, Integer> map = new TreeMap<>();
         try {
@@ -99,6 +101,7 @@ public class AnalyseSymptomsDataFromFile implements ISymptomReader {
      *            fonction write the new file result.out
      * @return filresult
      */
+    @Override
     public File writeSymptom(Map<String, Integer> map) {
         final StringBuilder line = new StringBuilder();
         File fileResult = new File("Project02Eclipse/src/com/hemebiotech/analytics/result/result.out");

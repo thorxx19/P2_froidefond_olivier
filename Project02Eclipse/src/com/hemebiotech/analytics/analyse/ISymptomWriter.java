@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Map;
 
 /**
- * allows you to write the sort and count symptoms in a new file
+ * allows you to write the sort and count symptoms in a new file.
  */
 public interface ISymptomWriter {
     /**

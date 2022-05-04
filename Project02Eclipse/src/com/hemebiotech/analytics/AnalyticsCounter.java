@@ -26,7 +26,7 @@ public class AnalyticsCounter {
         try {
             AnalyseSymptomsDataFromFile analyseSymptomsDataFromFile = new AnalyseSymptomsDataFromFile("Project02Eclipse/src/com/hemebiotech/analytics/resources/symptoms.txt");
             //read symptoms.txt
-            ArrayList<String> listSymptomsRaw = (ArrayList<String>) analyseSymptomsDataFromFile.getSymptoms();
+            ArrayList<String> listSymptomsRaw = analyseSymptomsDataFromFile.getSymptoms();
             //sort sympoms in ArrayList listSymptoms
             ArrayList<String> listSymptomsSort = analyseSymptomsDataFromFile.sortSymptoms(listSymptomsRaw);
             //count symptom

@@ -31,7 +31,7 @@ public class AnalyseSymptomsDataFromFile implements ISymptomReader,ISymptomSorti
      * @return string array of symptoms read from the file symptoms
      */
     @Override
-    public List<String> getSymptoms() {
+    public ArrayList<String> getSymptoms() {
 
         ArrayList<String> result = new ArrayList<String>();
         //line-by-line reading of the file and integration in the array result
